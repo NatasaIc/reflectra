@@ -3,4 +3,5 @@ export type RootStackParamList = {
   Journal: undefined;
   Payment: undefined;
   Reflection: undefined;
+  CreateAccountScreen: undefined;
 };
