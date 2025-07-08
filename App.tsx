@@ -5,13 +5,14 @@ import HomeScreen from './src/screens/HomeScreen';
 import JournalScreen from './src/screens/JournalScreen';
 import PaymentScreen from './src/screens/PaymentScreen';
 import ReflectionScreen from './src/screens/ReflectionScreen';
-import CreateAccountScreen from './src/screens/CreateAccountScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './src/constants/types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useEffect, useState } from 'react';
+import RegistrationScreen from './src/screens/RegistrationScreen';
+import ContactScreen from './src/screens/ContactScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,7 +27,8 @@ function Navigaton() {
         component={ReflectionScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="CreateAccountScreen" component={CreateAccountScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Registration" component={RegistrationScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Contact" component={ContactScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

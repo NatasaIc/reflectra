@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet, SafeAreaView, Dimensions, Platform } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Dimensions, Platform, TouchableOpacity, Image } from 'react-native';
 import { RootStackParamList } from '../constants/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { GlobalStyles } from '../constants/style';
 import PrimaryButton from '../components/PrimaryButton';
-import UserScreen from './CreateAccountScreen';
+import SidebarMenu from '../components/SidebarMenu';
 
 const { width, height } = Dimensions.get('window');
 
@@ -12,16 +12,23 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 function HomeScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.borderContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.primaryHeading}>Utveckla dina tankar</Text>
-          <Text style={styles.secondaryHeading}>med AI-driven reflekterande</Text>
-          <Text style={styles.tertiaryHeading}>dagbok</Text>
-          <Text style={styles.sloganHeading}>Där känslor finner klarhet.</Text>
+        <View style={styles.headerContainer}>
+          <SidebarMenu />
+          <View style={styles.logoContainer}>
+            {/* <Image source={require('../../assets/images/Reflectra.png')} /> */}
+          </View>
         </View>
-        <PrimaryButton onPress={() => navigation.navigate('UserScreen')}>
+        <View style={styles.textContainer}>
+          <Text style={styles.primaryHeading}>Evolve your thoughts</Text>
+          <Text style={styles.secondaryHeading}>with AI-driven reflective</Text>
+          <Text style={styles.tertiaryHeading}>jurnaling</Text>
+          <Text style={styles.sloganHeading}>Where feelings find clarity.</Text>
+        </View>
+        <PrimaryButton onPress={() => navigation.navigate('Registration')}>
           Börja skriva
         </PrimaryButton>
       </View>
@@ -42,6 +49,23 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     borderColor: GlobalStyles.colors.text100,
     borderRadius: 15,
+  },
+  headerContainer: {
+    position: 'absolute',
+    width: '100%',
+    height: '10%',
+    borderWidth: 0.2,
+    borderColor: GlobalStyles.colors.text100,
+    borderRadius: 15,
+    backgroundColor: GlobalStyles.colors.lable200,
+    opacity: 0.3,
+  },
+  navigationContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+  logoContainer: {
+      
   },
   textContainer: {
     flex: 1,
